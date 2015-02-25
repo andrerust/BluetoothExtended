@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">FDSampleBGR</string>
+
+    <string name="panic_operation">Panic Operation</string>
+    <string name="non_fiscal_receipt">Non Fiscal Receipt</string>
+    <string name="fiscal_receipt">Fiscal Receipt</string>
+    <string name="z_report">Z Report</string>
+    
+    <string name="msg_please_select_device">Please, select a device from list</string>
+    <string name="msg_bluetooth_is_not_supported">Bluetooth is not supported on this hardware platform</string>
+	<string name="msg_please_wait">Please, wait&#8230;</string>
+	<string name="msg_device_connection_is_closed">Device connection is closed</string>
+	<string name="msg_device_connected">Device connected</string>
+	<string name="msg_failed_to_connect_to_device">Failed to connect to device</string>	
+	
+</resources>

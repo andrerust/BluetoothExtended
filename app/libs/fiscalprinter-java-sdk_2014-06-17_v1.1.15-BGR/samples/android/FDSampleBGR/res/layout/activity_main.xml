@@ -1,0 +1,42 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/btn_panic_operation"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/panic_operation" />
+
+        <Button
+            android:id="@+id/btn_non_fiscal_receipt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/non_fiscal_receipt" />
+
+        <Button
+            android:id="@+id/btn_fiscal_receipt"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/fiscal_receipt" />
+        
+        <Button
+            android:id="@+id/btn_z_report"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/z_report" />
+        
+    </LinearLayout>
+
+</ScrollView>

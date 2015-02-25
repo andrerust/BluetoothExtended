@@ -1,0 +1,40 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+
+    function showAndroidToast(toast) {
+        Android.showToast(toast);
+    }
+
+    function switchBluetoothOn() {
+        Android.switchBluetoothOn();
+    }
+
+    function switchBluetoothOff() {
+        Android.switchBluetoothOff();
+    }
+
+    function showDeviceList() {
+        Android.showDeviceList();
+    }
+
+    function setVisibility() {
+        Android.setVisible();
+    }
+
+    </script>
+
+</head>
+<body>
+
+Bluetooth status: <input type="text" id="BluetoothStatus"></form><br><br>
+
+<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')"/><br/>
+<input type="button" value="Turn Bluetooth on" onClick="switchBluetoothOn()"/><br/>
+<input type="button" value="Turn Bluetooth off" onClick="switchBluetoothOff()"/><br/>
+<input type="button" value="Show list of devices" onClick="showDeviceList()"/><br/>
+<input type="button" value="Set Visibility on (inactive)" onClick="setVisibility()"/><br/>
+
+</body>
+</html>
