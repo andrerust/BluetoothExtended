@@ -1,10 +1,7 @@
 package com.threemo.bluetoothextended;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.Intent;
-import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
@@ -12,7 +9,6 @@ import android.widget.Toast;
  * Created by andre on 25.02.2015.
  */
 public class JavaScriptInterface extends Activity {
-    private MainActivity parentActivity;
     private Context mContext;
 
     /**
@@ -20,9 +16,6 @@ public class JavaScriptInterface extends Activity {
      */
     public JavaScriptInterface(Context c) {
         mContext = c;
-    }
-
-    public JavaScriptInterface() {
     }
 
     @JavascriptInterface
@@ -50,6 +43,15 @@ public class JavaScriptInterface extends Activity {
     public void setVisible() {
         BluetoothHandler bth = new BluetoothHandler();
         bth.setVisible(mContext);
+    }
+
+    @JavascriptInterface
+    public void setField() {
+        MainActivity activity = (MainActivity) mContext;
+        activity.callOut();
+        activity.setTextField();
+        //System.out.println(activity.callOut());
+
     }
 
     @JavascriptInterface

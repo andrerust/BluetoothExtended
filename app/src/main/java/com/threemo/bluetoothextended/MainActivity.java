@@ -15,7 +15,18 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
     private WebView webView = null;
-    private BluetoothAdapter BA;
+
+    /*
+        to call via Context (MainActivity>Activity)
+     */
+    public void callOut() {
+        Toast.makeText(this, "CAll out", Toast.LENGTH_SHORT).show();
+    }
+
+    public void setTextField() {
+        String testMessage = "Testing is fun";
+        webView.loadUrl("javascript:callFromActivity('" + testMessage + "')");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
