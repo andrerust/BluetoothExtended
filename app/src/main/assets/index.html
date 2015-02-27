@@ -20,6 +20,11 @@
         document.getElementById("BluetoothDevices").value = Android.showDeviceList();
     }
 
+    function sendDataToPrinter() {
+        var printerValueFromJS = document.getElementById("PrinterValueFromJS").value;
+        Android.sendDataToPrinter();
+    }
+
     function callFromActivity(value){
         document.getElementById("BluetoothStatus").value = value;
     }
@@ -42,6 +47,10 @@
 
 
 
+
+
+
+
     </script>
 
 </head>
@@ -54,7 +63,14 @@
     <input type="button" value="Turn Bluetooth on" onClick="switchBluetoothOn()"/><br/>
     <input type="button" value="Turn Bluetooth off" onClick="switchBluetoothOff()"/><br/>
     <input type="button" value="Show list of devices" onClick="showDeviceList()"/><br/>
-    <form>Bluetooth Devices: <input type="text" id="BluetoothDevices" value="no devices">
+
+    Bluetooth Devices: <input type="text" id="BluetoothDevices" value="no devices">
+
+    <br/><br/>
+
+    Enter your name here: <input type="text" id="PrinterValueFromJS"/>
+    <input type="button" onclick="sendDataToPrinter()" value="Send data">
+
     <br/><br/>
 
     <input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')"/>

@@ -20,6 +20,13 @@ public class WebViewJavaScriptActivityInterface {
     }
 
     @JavascriptInterface
+    public String sendDataToPrinter() {
+
+
+        return "";
+    }
+
+    @JavascriptInterface
     public void switchBluetoothOn() {
         BluetoothHandler bth = new BluetoothHandler();
         bth.on(parentActivity);

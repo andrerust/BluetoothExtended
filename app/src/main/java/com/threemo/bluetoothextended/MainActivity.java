@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 
         /* enable javascript */
         WebSettings webSettings = webView.getSettings();
-        webSettings.setBuiltInZoomControls(true);
+        webSettings.setBuiltInZoomControls(false);
 
         //enable JavaScript and attach javascript interface
         webSettings.setJavaScriptEnabled(true);
@@ -44,6 +44,28 @@ public class MainActivity extends Activity {
         webView.setWebViewClient(new FiscalWebViewClient());
         webView.setWebChromeClient(new FiscalWebChromeClient());
         webView.loadUrl("file:///android_asset/index.html");
+
+
+        initializePrinting();
+    }
+
+    private void initializePrinting() {
+        BluetoothHandler bth = new BluetoothHandler();
+        if (bth.bluetoothIsAccessible()) {
+            if (bth.bluetoothIsActive()) {
+                selectDevice(this);
+            } else {
+                bth.enableBluetooth(this);
+            }
+        } else {
+            Toast.makeText(this, R.string.msg_bluetooth_is_not_supported, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    public void selectDevice(MainActivity activity) {
+        //Intent selectDevice = new Intent(this, DeviceActivity.class);
+        //startActivityForResult(selectDevice, REQUEST_DEVICE);
     }
 
     /*
@@ -206,7 +228,5 @@ public class MainActivity extends Activity {
         }
     }
 
-    public void javascriptCallFinished(int val) {
-        System.out.println(val);
-    }
+
 }
