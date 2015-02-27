@@ -3,77 +3,75 @@ package com.threemo.bluetoothextended;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
 import android.webkit.JavascriptInterface;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Set;
 
 /**
- * Created by andre on 25.02.2015.
+ * Created by andre
  */
 public class BluetoothHandler {
 
+    private String status = null;
+
+    // @Constructor
     public BluetoothHandler() {
+        BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
+        status = ((!BA.isEnabled()) ? "Bluetooth OFF" : "Bluetooth ON");
+    }
+
+    // return bluetooth status
+    public String getStatus() {
+        return this.status;
     }
 
     @JavascriptInterface
-    public void on(Context mContext) {
+    public void on(Activity activity) {
         BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
 
         if (!BA.isEnabled()) {
             BA.enable();
-            Toast.makeText(mContext, "Turned on", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Turned on", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(mContext, "Already on", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Already on", Toast.LENGTH_SHORT).show();
         }
     }
 
     @JavascriptInterface
-    public void off(Context mContext) {
+    public void off(Activity activity) {
         BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
 
         if (BA.isEnabled()) {
             BA.disable();
-            Toast.makeText(mContext, "Turned off", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Turned off", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(mContext, "Already off", Toast.LENGTH_SHORT).show();
+            Toast.makeText(activity, "Already off", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
-
-    public void showDeviceList(Context mContext) {
+    public String showDeviceList(Activity activity) {
         BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
         Set<BluetoothDevice> pairedDevices = BA.getBondedDevices();
 
         ArrayList list = new ArrayList();
+        StringBuilder deviceLine = new StringBuilder();
         int count = 1;
 
         //System.out.println(toast.getDuration());
-        Toast.makeText(mContext, "Showing Paired Devices", Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity, "Showing Paired Devices", Toast.LENGTH_SHORT).show();
 
         if (BA.isEnabled()) {
             for (BluetoothDevice device : pairedDevices) {
                 list.add(device.getName());
-                Toast.makeText(mContext, "Device no " + count + " " + device.getName(), Toast.LENGTH_LONG).show();
+                deviceLine.append(device.getName());
+                Toast.makeText(activity, "Device no " + count + " " + device.getName(), Toast.LENGTH_LONG).show();
             }
         } else {
-            Toast.makeText(mContext, "Bluetooth not enabled", Toast.LENGTH_LONG).show();
-
+            Toast.makeText(activity, "Bluetooth not enabled", Toast.LENGTH_LONG).show();
         }
-
-
+        return deviceLine.toString();
     }
 
-    public void setVisible(Context mContext) {
-        BluetoothAdapter BA = BluetoothAdapter.getDefaultAdapter();
-        //Intent getVisible = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-        Toast.makeText(mContext, "Not implemented", Toast.LENGTH_LONG).show();
-    }
 }

@@ -13,34 +13,58 @@
 
     function switchBluetoothOff() {
         Android.switchBluetoothOff();
+        document.getElementById("BluetoothDevices").value = "no devices";
     }
 
     function showDeviceList() {
-        Android.showDeviceList();
+        document.getElementById("BluetoothDevices").value = Android.showDeviceList();
     }
 
-    function setVisibility() {
-        Android.setVisible();
+    function callFromActivity(value){
+        document.getElementById("BluetoothStatus").value = value;
+    }
+
+    function showAlert() {
+        alert("This is js alert method");
+    }
+
+    function showPrompt() {
+        prompt("This is js prompt method", "")
+    }
+
+    function showConfirm() {
+        confirm("This is js confirm method")
     }
 
     function setField() {
-        Android.setField();
+        document.getElementById("BluetoothStatus").value = Android.setField();
     }
+
+
 
     </script>
 
 </head>
 <body>
 
-Bluetooth status: <input type="text" id="BluetoothStatus"></form><br /><br />
+<form>Bluetooth status: <input type="text" id="BluetoothStatus" value="set by html"><br/>
+    <input type="button" value="Insert Bluetooth status to field" onClick="setField()"/>
+    <br/><br/>
 
-<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')"/><br/>
-<input type="button" value="Turn Bluetooth on" onClick="switchBluetoothOn()"/><br/>
-<input type="button" value="Turn Bluetooth off" onClick="switchBluetoothOff()"/><br/>
-<input type="button" value="Show list of devices" onClick="showDeviceList()"/><br/>
-<input type="button" value="Set Visibility on (inactive)" onClick="setVisibility()"/><br/><br/>
+    <input type="button" value="Turn Bluetooth on" onClick="switchBluetoothOn()"/><br/>
+    <input type="button" value="Turn Bluetooth off" onClick="switchBluetoothOff()"/><br/>
+    <input type="button" value="Show list of devices" onClick="showDeviceList()"/><br/>
+    <form>Bluetooth Devices: <input type="text" id="BluetoothDevices" value="no devices">
+    <br/><br/>
 
-<input type="button" value="Insert Bluetooth status to field" onClick="setField()"/><br/>
-
+    <input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')"/>
+    <br/>
+    <button onclick="showAlert()">Alert Button</button>
+    <br>
+    <button onclick="showConfirm()">Confirm Button</button>
+    <br>
+    <button onclick="showPrompt()">Prompt Button</button>
+    <br>
+</form>
 </body>
 </html>
